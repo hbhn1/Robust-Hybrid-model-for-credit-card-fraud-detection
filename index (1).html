@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome :)))))) x100 (Crash Effect)</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .welcome-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.5s;
+        }
+        
+        h1 {
+            color: #ff4757;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .welcome-message {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #2f3542;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .welcome-message:hover {
+            transform: scale(1.05);
+            background-color: #ffeaa7;
+        }
+        
+        /* Crash effect styles */
+        .crash-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            color: #fff;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-family: monospace;
+        }
+        
+        .error-code {
+            color: #ff4757;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00ff;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ffff;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            10% { clip: rect(112px, 9999px, 76px, 0); }
+            20% { clip: rect(85px, 9999px, 77px, 0); }
+            30% { clip: rect(27px, 9999px, 97px, 0); }
+            40% { clip: rect(64px, 9999px, 98px, 0); }
+            50% { clip: rect(61px, 9999px, 85px, 0); }
+            60% { clip: rect(99px, 9999px, 114px, 0); }
+            70% { clip: rect(34px, 9999px, 115px, 0); }
+            80% { clip: rect(98px, 9999px, 129px, 0); }
+            90% { clip: rect(43px, 9999px, 96px, 0); }
+            100% { clip: rect(82px, 9999px, 64px, 0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 119px, 0); }
+            10% { clip: rect(25px, 9999px, 145px, 0); }
+            20% { clip: rect(50px, 9999px, 137px, 0); }
+            30% { clip: rect(60px, 9999px, 139px, 0); }
+            40% { clip: rect(60px, 9999px, 154px, 0); }
+            50% { clip: rect(91px, 9999px, 131px, 0); }
+            60% { clip: rect(92px, 9999px, 123px, 0); }
+            70% { clip: rect(14px, 9999px, 125px, 0); }
+            80% { clip: rect(73px, 9999px, 142px, 0); }
+            90% { clip: rect(108px, 9999px, 137px, 0); }
+            100% { clip: rect(87px, 9999px, 134px, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container" id="main-content">
+        <h1 class="glitch" data-text="Your Welcome Messages">Your Welcome Messages</h1>
+        <div id="welcome-messages"></div>
+    </div>
+    
+    <div class="crash-effect" id="crash-screen">
+        <div class="error-code">CRITICAL_ERROR_0xW3LC0M3_CR4SH</div>
+        <div>A fatal exception 0E has occurred at 0028:C0011E36</div>
+        <div>in VXD VMM(01) + 00010E36.</div>
+        <br>
+        <div>The current application will be terminated.</div>
+        <br>
+        <div>* Press any key to terminate the current application.</div>
+        <div>* Press CTRL+ALT+DEL again to restart your computer.</div>
+        <br>
+        <div class="blink">_</div>
+    </div>
+
+    <script>
+        // Generate 100 welcome messages
+        const container = document.getElementById('welcome-messages');
+        const welcomeText = "Welcome :))))))";
+        
+        for (let i = 0; i < 100; i++) {
+            const message = document.createElement('div');
+            message.className = 'welcome-message';
+            message.textContent = `${i + 1}. ${welcomeText}`;
+            container.appendChild(message);
+        }
+        
+        // Crash effect when interacting with the page
+        let crashCount = 0;
+        const crashThreshold = 5; // Number of interactions before crash
+        const crashScreen = document.getElementById('crash-screen');
+        const mainContent = document.getElementById('main-content');
+        
+        // Add event listeners for crash effect
+        document.addEventListener('click', triggerCrash);
+        document.addEventListener('keydown', triggerCrash);
+        document.addEventListener('mousemove', triggerCrash);
+        document.addEventListener('scroll', triggerCrash);
+        
+        function triggerCrash() {
+            crashCount++;
+            
+            if (crashCount >= crashThreshold) {
+                // Activate crash screen
+                crashScreen.style.display = 'flex';
+                mainContent.style.display = 'none';
+                
+                // Add glitch effects to the crash screen
+                setTimeout(() => {
+                    document.body.style.background = '#000';
+                    document.body.style.color = '#0f0';
+                    document.body.style.fontFamily = 'monospace';
+                    
+                    // Simulate BSOD text appearing
+                    const lines = document.querySelectorAll('#crash-screen div');
+                    lines.forEach((line, index) => {
+                        setTimeout(() => {
+                            line.style.opacity = '1';
+                        }, index * 200);
+                    });
+                    
+                    // Final effect - make everything shake
+                    setTimeout(() => {
+                        document.body.style.transform = 'translateX(10px)';
+                        setTimeout(() => {
+                            document.body.style.transform = 'translateX(-10px)';
+                            setTimeout(() => {
+                                document.body.style.transform = 'translateX(0)';
+                            }, 50);
+                        }, 50);
+                    }, 2000);
+                }, 500);
+                
+                // Remove event listeners after crash
+                document.removeEventListener('click', triggerCrash);
+                document.removeEventListener('keydown', triggerCrash);
+                document.removeEventListener('mousemove', triggerCrash);
+                document.removeEventListener('scroll', triggerCrash);
+            } else {
+                // Pre-crash effects
+                const shakeAmount = (crashThreshold - crashCount) * 2;
+                document.body.style.transform = `translateX(${Math.random() * shakeAmount - shakeAmount/2}px) translateY(${Math.random() * shakeAmount - shakeAmount/2}px)`;
+                
+                // Color flash warning
+                if (crashCount >= crashThreshold - 2) {
+                    document.body.style.background = `linear-gradient(135deg, #ff4757 0%, #ff6b81 100%)`;
+                    setTimeout(() => {
+                        document.body.style.background = `linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)`;
+                    }, 200);
+                }
+            }
+        }
+        
+        // Initial animation for welcome messages
+        const messages = document.querySelectorAll('.welcome-message');
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                msg.style.opacity = '1';
+                msg.style.transform = 'translateY(0)';
+            }, index * 50);
+        });
+    </script>
+</body>
+</html>
